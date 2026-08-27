@@ -1,0 +1,28 @@
+﻿# Archivos de texto
+* text=auto
+
+# JavaScript / TypeScript
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+
+# JSON / configuración
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# SQL
+*.sql text eol=lf
+
+# HTML / CSS
+*.html text eol=lf
+*.css text eol=lf
+
+# No modificar archivos binarios
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary

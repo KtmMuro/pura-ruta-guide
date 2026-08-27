@@ -1,0 +1,20 @@
+﻿.env
+.env.*
+node_modules/
+.expo/
+dist/
+.npm-cache/
+
+# Respaldos y archivos temporales
+backups/
+Respaldos/
+App_backup_*.js
+App_original.js
+App_utf8_*.js
+Home_nueva_*.txt
+App/
+App_backup_registro_negocio/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
