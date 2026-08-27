@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+﻿import { supabase } from './supabase';
 import React, { useEffect, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import {
@@ -729,7 +729,40 @@ function Home({ onLogout }) {
         const supabaseCategory =
           categoryMap[selectedCategory] || selectedCategory;
 
-        query = query.eq('category', supabaseCategory);
+        if (selectedCategory === 'Termales') {
+          const { data: thermalBusinesses, error: thermalError } =
+            await supabase
+              .from('business_categories')
+              .select('business_id')
+              .eq('category', 'Termales');
+
+          if (thermalError) {
+            console.log(
+              'Error consultando categorías adicionales:',
+              thermalError.message
+            );
+
+            setPlacesError(
+              'No se pudieron cargar las categorías adicionales.'
+            );
+
+            setPlaces([]);
+            return;
+          }
+
+          const thermalIds =
+            thermalBusinesses?.map((item) => item.business_id) || [];
+
+          if (thermalIds.length > 0) {
+            query = query.or(
+              `category.eq.${supabaseCategory},id.in.(${thermalIds.join(',')})`
+            );
+          } else {
+            query = query.eq('category', supabaseCategory);
+          }
+        } else {
+          query = query.eq('category', supabaseCategory);
+        }
       }
 
       if (budget !== 'all') {
@@ -2189,6 +2222,12 @@ homeSubtitle: {
     justifyContent: 'center',
   },
 
+  categoryActive: {
+    backgroundColor: '#153d20',
+    borderColor: colors.gold,
+    borderWidth: 2,
+  },
+
   categoryIcon: {
     color: colors.gold,
     fontSize: 20,
@@ -2199,6 +2238,11 @@ homeSubtitle: {
     fontSize: 8,
     marginTop: 5,
     textAlign: 'center',
+  },
+
+  categoryTextActive: {
+    color: colors.gold,
+    fontWeight: '800',
   },
 
   budgetRow: {
@@ -2738,6 +2782,7 @@ homeSubtitle: {
     fontSize: 11,
     fontWeight: '700',
   },});
+
 
 
 
