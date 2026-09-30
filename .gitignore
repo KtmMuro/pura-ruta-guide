@@ -18,3 +18,44 @@ App_backup_registro_negocio/
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+
+# ============================================================
+# MALEKU GO - Archivos locales / Beta 2
+# ============================================================
+
+# Respaldos de App.js
+App.js.backup-*
+App.before-*.js
+App_*.js
+App.js.home-*.tmp
+
+# Respaldos de configuración
+*.backup-*
+*.backup-before-*
+*.backup-pre-*
+
+# Diagnósticos y archivos temporales
+*.tmp
+*.log
+logs.txt
+diagnostico-*.txt
+diff_*.txt
+expo-output.txt
+estructura.txt
+budget_block.txt
+home-render-actual.txt
+grok.txt
+entrar a expo.txt
+
+# Archivos comprimidos locales
+*.zip
+
+# Archivos potencialmente sensibles/locales
+ingreso_supabase.txt
+malekugo.costarica@gmail.com.txt
+
+# Respaldos del propio gitignore
+.gitignore.backup-*
+
+# Supabase CLI - estado local
+supabase/.temp/

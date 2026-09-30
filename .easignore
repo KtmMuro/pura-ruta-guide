@@ -1,0 +1,61 @@
+# ============================================================
+# MALEKU GO - EAS BUILD IGNORE
+# Mantener sincronizado conceptualmente con .gitignore
+# ============================================================
+
+# Variables locales / credenciales
+.env
+.env.*
+!.env.example
+
+# Dependencias y caches locales
+node_modules/
+.expo/
+.npm-cache/
+
+# Salidas y artefactos generados
+dist/
+
+# Respaldos históricos
+backups/
+Respaldos/
+App_backup_registro_negocio/
+App/
+
+# Backups de archivos en la raiz
+*.backup-*
+*.backup_*
+*.bak
+*.tmp
+*.orig
+
+# Variantes/resguardos históricos de App
+App_backup_*.js
+App_original.js
+App_utf8_*.js
+Home_nueva_*.txt
+
+# Diagnósticos / auditorías locales
+diagnostico-*.txt
+diagnostico_*.txt
+diff_*.txt
+*-audit.md
+*audit*.md
+*diagnostic*.txt
+*diagnostic*.md
+
+# Supabase CLI: metadata local
+supabase/.temp/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Herramientas locales / paquetes descargados
+platform-tools-latest-windows.zip

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maleku Go — Identidad Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dosel: #1E4B3B;      /* verde dosel — encabezados, nav, marca */
+    --dosel-80: #2A5F4B;
+    --arenal: #2FA35C;     /* verde llamativo — CTA */
+    --arenal-dark: #24824A;
+    --arenal-light: #E4F3E9;
+    --bruma: #F2F4EC;      /* fondo — niebla del bosque */
+    --bruma-card: #FFFFFF;
+    --basalto: #1C211D;    /* texto principal */
+    --piedra: #6B7A70;     /* texto secundario */
+    --miel: #D9A441;       /* acento — dorado, uso escaso */
+    --linea: #E1E6DC;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bruma);
+    color: var(--basalto);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px 120px;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background: linear-gradient(180deg, var(--dosel) 0%, #163A2D 100%);
+    color: #F2F4EC;
+    padding: 72px 0 96px;
+    margin-bottom: 64px;
+  }
+  .hero .wrap{ padding-top: 0; padding-bottom: 0; }
+  .eyebrow{
+    font-size: 14px;
+    color: #A9CDB8;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .hero h1{
+    font-size: 56px;
+    line-height: 1.05;
+    max-width: 680px;
+    color: #FFFFFF;
+  }
+  .hero p.lead{
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 520px;
+    color: #CFE3D6;
+    margin-top: 22px;
+  }
+  .hero-photo{
+    margin-top: 48px;
+    height: 280px;
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.10), transparent 55%),
+      linear-gradient(120deg, #0F2E22 0%, #1E4B3B 45%, #2FA35C 100%);
+    position: relative;
+    overflow: hidden;
+    display:flex;
+    align-items:flex-end;
+    padding: 24px;
+  }
+  .hero-photo::after{
+    content:"";
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(100deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 40px);
+  }
+  .hero-photo span{
+    position: relative;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 600;
+  }
+
+  section{ margin-bottom: 72px; }
+  .section-head{ margin-bottom: 28px; }
+  .section-head .tag{
+    font-size: 13px;
+    color: var(--arenal-dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .section-head h2{ font-size: 30px; }
+  .section-head p{
+    color: var(--piedra);
+    font-size: 15px;
+    max-width: 560px;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  /* ===== PALETA ===== */
+  .palette{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+  }
+  .swatch{
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--linea);
+    background: var(--bruma-card);
+  }
+  .swatch .fill{ height: 92px; }
+  .swatch .meta{ padding: 12px 14px; }
+  .swatch .meta .name{ font-weight: 700; font-size: 13.5px; }
+  .swatch .meta .hex{ font-size: 12px; color: var(--piedra); margin-top: 2px; }
+  .swatch .meta .use{ font-size: 11.5px; color: var(--piedra); margin-top: 6px; line-height: 1.4; }
+
+  /* ===== TIPOGRAFÍA ===== */
+  .type-row{
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--linea);
+  }
+  .type-row:first-child{ padding-top: 0; }
+  .type-row .label{
+    width: 150px;
+    flex-shrink: 0;
+    font-size: 12.5px;
+    color: var(--piedra);
+    font-weight: 600;
+  }
+  .type-sample-h1{ font-family:'Fraunces',serif; font-weight:600; font-size:42px; }
+  .type-sample-h2{ font-family:'Fraunces',serif; font-weight:600; font-size:28px; }
+  .type-sample-h3{ font-family:'Fraunces',serif; font-weight:500; font-size:21px; }
+  .type-sample-body{ font-family:'Manrope',sans-serif; font-weight:400; font-size:16px; line-height:1.6; max-width:480px; }
+  .type-sample-label{ font-family:'Manrope',sans-serif; font-weight:700; font-size:13px; color: var(--dosel); }
+  .type-sample-caption{ font-family:'Manrope',sans-serif; font-weight:500; font-size:13px; color: var(--piedra); }
+
+  .font-pair-note{
+    display:flex; gap: 40px; margin-top: 28px;
+  }
+  .font-pair-note div{ flex:1; }
+  .font-pair-note .fname{ font-family:'Fraunces',serif; font-size:22px; margin-bottom:6px; }
+  .font-pair-note .froletxt{ font-size: 13.5px; color: var(--piedra); line-height:1.55; }
+
+  /* ===== BOTONES ===== */
+  .btn-row{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .btn{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:15px;
+    padding: 14px 26px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary{ background: var(--arenal); color:#fff; box-shadow: 0 8px 20px -6px rgba(47,163,92,0.55); }
+  .btn-secondary{ background: transparent; color: var(--dosel); border: 1.5px solid var(--dosel-80); }
+  .btn-ghost{ background: transparent; color: var(--piedra); }
+  .btn-disabled{ background: #E1E6DC; color: #9AA79E; }
+
+  /* ===== TARJETA EXPERIENCIA ===== */
+  .cards-grid{
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 20px;
+  }
+  .exp-card{
+    background: var(--bruma-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--linea);
+  }
+  .exp-photo{
+    height: 200px;
+    position: relative;
+    background: linear-gradient(135deg, #2C6B4E 0%, #1E4B3B 60%, #123024 100%);
+  }
+  .exp-photo .badge{
+    position:absolute; top:14px; left:14px;
+    background: rgba(255,255,255,0.92);
+    color: var(--dosel);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+  .exp-photo .caption{
+    position:absolute; bottom:12px; left:14px;
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .exp-body{ padding: 18px 20px 20px; }
+  .exp-body .title{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .exp-body .sub{ font-size: 13px; color: var(--piedra); margin-top: 4px; }
+  .exp-body .row{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--linea);
+  }
+  .exp-body .price{ font-family:'Fraunces',serif; font-size: 18px; font-weight:600; }
+  .exp-body .price .per{ font-family:'Manrope',sans-serif; font-size:12px; color:var(--piedra); font-weight:500; }
+  .rating{ font-size: 13px; font-weight:700; color: var(--miel); display:flex; align-items:center; gap:5px;}
+
+  /* ===== RESUMEN PRESUPUESTO ===== */
+  .budget-card{
+    background: var(--bruma-card);
+    border: 1px solid var(--linea);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .budget-card .btitle{ font-family:'Fraunces',serif; font-size: 19px; margin-bottom: 18px; }
+  .budget-line{
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--linea);
+    font-size: 14.5px;
+  }
+  .budget-line:last-child{ border-bottom:none; }
+  .budget-line .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:10px; }
+  .budget-line .label{ display:flex; align-items:center; color: var(--basalto); font-weight:600; }
+  .budget-line .value{ font-weight:700; }
+  .dot-known{ background: var(--arenal); }
+  .dot-available{ background: var(--miel); }
+  .dot-pending{ background: #C7CFC3; }
+
+  /* ===== NAV ===== */
+  .tabbar{
+    background: var(--bruma-card);
+    border: 1px solid var(--linea);
+    border-radius: 100px;
+    display:flex;
+    padding: 8px;
+    max-width: 420px;
+    gap: 4px;
+  }
+  .tabbar .tab{
+    flex:1; text-align:center; padding: 10px 0;
+    font-size: 12.5px; font-weight:700; color: var(--piedra);
+    border-radius: 100px;
+  }
+  .tabbar .tab.active{ background: var(--arenal-light); color: var(--dosel); }
+
+  /* ===== PRINCIPIOS ===== */
+  .principles{
+    display:grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+  }
+  .principle h3{ font-size: 18px; margin-bottom: 8px; }
+  .principle p{ font-size: 14px; color: var(--piedra); line-height:1.6; }
+  .principle .num{
+    font-family:'Fraunces',serif;
+    font-size: 13px;
+    color: var(--arenal-dark);
+    font-weight:600;
+    margin-bottom: 10px;
+  }
+
+  .footnote{
+    font-size: 12.5px; color: var(--piedra); margin-top: 10px; line-height: 1.6;
+  }
+
+  @media (max-width: 760px){
+    .hero h1{ font-size: 38px; }
+    .palette{ grid-template-columns: repeat(2,1fr); }
+    .cards-grid{ grid-template-columns: 1fr; }
+    .principles{ grid-template-columns: 1fr; }
+    .font-pair-note{ flex-direction: column; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">MALEKU GO — IDENTIDAD VISUAL</div>
+      <h1>La Fortuna, contada como la cuenta alguien que ya la vivió.</h1>
+      <p class="lead">Turismo tropical premium: naturaleza real, organización confiable y la sensación de que el itinerario ya fue pensado por alguien que conoce el volcán, no por un formulario.</p>
+      <div class="hero-photo"><span>fotografía — Catarata La Fortuna, luz de media mañana</span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section>
+      <div class="section-head">
+        <div class="tag">PALETA</div>
+        <h2>Verde de dosel, no verde de app</h2>
+        <p>El verde viene del bosque nuboso, no de un semáforo de UI. Dos verdes hacen el trabajo pesado; el dorado se reserva para precio y calificación, nunca para fondo ni botones.</p>
+      </div>
+
+      <div class="palette">
+        <div class="swatch">
+          <div class="fill" style="background:var(--dosel)"></div>
+          <div class="meta">
+            <div class="name">Dosel</div>
+            <div class="hex">#1E4B3B</div>
+            <div class="use">Encabezados, nav, marca</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:var(--arenal)"></div>
+          <div class="meta">
+            <div class="name">Arenal</div>
+            <div class="hex">#2FA35C</div>
+            <div class="use">Botón primario, estados activos</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:var(--miel)"></div>
+          <div class="meta">
+            <div class="name">Miel</div>
+            <div class="hex">#D9A441</div>
+            <div class="use">Precio, calificación — uso escaso</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:var(--bruma)"></div>
+          <div class="meta">
+            <div class="name">Bruma</div>
+            <div class="hex">#F2F4EC</div>
+            <div class="use">Fondo general</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:var(--basalto)"></div>
+          <div class="meta">
+            <div class="name">Basalto</div>
+            <div class="hex">#1C211D</div>
+            <div class="use">Texto principal</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="fill" style="background:var(--piedra)"></div>
+          <div class="meta">
+            <div class="name">Piedra</div>
+            <div class="hex">#6B7A70</div>
+            <div class="use">Texto secundario</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="tag">TIPOGRAFÍA</div>
+        <h2>Dos familias, roles claros</h2>
+        <p>Fraunces para lo editorial — nombres de lugares, precios, momentos que merecen presencia. Manrope para todo lo que el usuario necesita leer rápido: horarios, botones, estados.</p>
+      </div>
+
+      <div class="type-row">
+        <div class="label">H1 / 42px</div>
+        <div class="type-sample-h1">Catarata La Fortuna</div>
+      </div>
+      <div class="type-row">
+        <div class="label">H2 / 28px</div>
+        <div class="type-sample-h2">Día 2 — Volcán y aguas termales</div>
+      </div>
+      <div class="type-row">
+        <div class="label">H3 / 21px</div>
+        <div class="type-sample-h3">Costo conocido: ₡184,000</div>
+      </div>
+      <div class="type-row">
+        <div class="label">Body / 16px</div>
+        <div class="type-sample-body">Reservamos la sesión de las 8:00 a.m. porque el traslado desde el hospedaje toma 25 minutos y queríamos margen antes del almuerzo.</div>
+      </div>
+      <div class="type-row">
+        <div class="label">Label / 13px</div>
+        <div class="type-sample-label">Sesión fija reservada</div>
+      </div>
+      <div class="type-row">
+        <div class="label">Caption / 13px</div>
+        <div class="type-sample-caption">Traslado estimado: 20 min · Incluye almuerzo</div>
+      </div>
+
+      <div class="font-pair-note">
+        <div>
+          <div class="fname">Fraunces</div>
+          <div class="froletxt">Serif con curva orgánica, no rígida — evoca hoja, no piedra. Se usa solo en tamaños grandes: títulos, precios, nombres de actividad. Nunca en párrafos largos ni en botones.</div>
+        </div>
+        <div>
+          <div class="fname" style="font-family:'Manrope',sans-serif; font-weight:800;">Manrope</div>
+          <div class="froletxt">Sans humanista, geometría suave. Carga toda la información operativa: horarios, botones, badges, navegación. Es la voz de "esto está organizado".</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="tag">BOTONES</div>
+        <h2>El verde llamativo, reservado para una sola acción por pantalla</h2>
+        <p>Un solo botón primario visible a la vez. Si hay una acción secundaria, va en contorno — nunca dos botones sólidos compitiendo.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary">Crear mi viaje</button>
+        <button class="btn btn-secondary">Ver detalles</button>
+        <button class="btn btn-ghost">Omitir</button>
+        <button class="btn btn-disabled" disabled>No disponible</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="tag">COMPONENTES</div>
+        <h2>Tarjeta de experiencia + resumen de presupuesto</h2>
+        <p>La foto manda: ocupa más espacio que el texto. El badge indica tipo de actividad sin gritarlo. El precio va en Fraunces para que se sienta como una cifra real, no una etiqueta de sistema.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="exp-card">
+          <div class="exp-photo">
+            <div class="badge">Sesión fija · 8:00 a.m.</div>
+            <div class="caption">Parque Nacional Volcán Arenal</div>
+          </div>
+          <div class="exp-body">
+            <div class="title">Caminata guiada al mirador de coladas</div>
+            <div class="sub">3 h · incluye traslado desde el hospedaje</div>
+            <div class="row">
+              <div class="price">$45<span class="per"> / persona</span></div>
+              <div class="rating">★ 4.9</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="budget-card">
+          <div class="btitle">Presupuesto del viaje</div>
+          <div class="budget-line">
+            <span class="label"><span class="dot dot-known"></span>Costo conocido</span>
+            <span class="value">₡184,000</span>
+          </div>
+          <div class="budget-line">
+            <span class="label"><span class="dot dot-available"></span>Disponible estimado</span>
+            <span class="value">₡96,500</span>
+          </div>
+          <div class="budget-line">
+            <span class="label"><span class="dot dot-pending"></span>Costos pendientes</span>
+            <span class="value">₡22,000</span>
+          </div>
+          <div class="footnote">Los tres estados existentes del motor de presupuesto, con el mismo color en toda la app: verde = confirmado, dorado = disponible, gris = por confirmar.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="tag">NAVEGACIÓN</div>
+        <h2>Simple, sin jerarquía escondida</h2>
+        <p>Tres o cuatro destinos máximo. El estado activo se marca con fondo, no solo con color de texto — más claro en exteriores, con sol directo, que es donde de verdad se usa esta app.</p>
+      </div>
+      <div class="tabbar">
+        <div class="tab active">Itinerario</div>
+        <div class="tab">Explorar</div>
+        <div class="tab">Presupuesto</div>
+        <div class="tab">Perfil</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="tag">PRINCIPIOS</div>
+        <h2>Lo que esta identidad protege</h2>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <div class="num">01</div>
+          <h3>La foto es el argumento</h3>
+          <p>Si hay que elegir entre más texto o más imagen, gana la imagen. El texto explica lo que la foto no puede: horario, precio, logística.</p>
+        </div>
+        <div class="principle">
+          <div class="num">02</div>
+          <h3>Un verde manda, uno acompaña</h3>
+          <p>Arenal (llamativo) es la única acción posible por pantalla. Dosel (oscuro) es estructura — nunca compite por atención.</p>
+        </div>
+        <div class="principle">
+          <div class="num">03</div>
+          <h3>Nada de tarjetas oscuras</h3>
+          <p>El fondo siempre es claro. La confianza en turismo se lee en blanco/crema abierto, no en superficies oscuras tipo dashboard.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

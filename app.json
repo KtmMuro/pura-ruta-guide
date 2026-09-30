@@ -1,18 +1,29 @@
-﻿{
+{
   "expo": {
-    "name": "Pura Ruta Guide",
+    "name": "Maleku Go",
     "slug": "pura-ruta-guide",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "userInterfaceStyle": "dark",
-    "scheme": "puraruta",
-    "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Pura Ruta Guide necesita acceso a tus fotos para la imagen del negocio."
-        }
-      ]
-    ]
+    "scheme": "malekugo",
+    "extra": {
+      "eas": {
+        "projectId": "0c2ffc4f-f1b6-467b-a689-734ea1b5a94f"
+      }
+    },
+    "owner": "malekugo",
+    "android": {
+      "package": "com.malekugo.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/maleku-adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "icon": "./assets/Android_Maleku.png",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0c2ffc4f-f1b6-467b-a689-734ea1b5a94f"
+    },
+    "ios": {}
   }
 }
