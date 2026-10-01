@@ -1594,7 +1594,7 @@ function Splash({
 
         <View style={styles.splashCenter}>
           <Image
-            source={require('./assets/Original con lapa.png')}
+            source={require('./assets/Logo_lapa.png')}
             style={styles.malekuLogo}
             resizeMode="contain"
           />
@@ -30735,11 +30735,6 @@ function Home({ onLogout, weather, language, signupAuthRevision }) {
       ]}
     >
       <SafeAreaView style={styles.tripPlannerSafeArea}>
-        <Image
-          source={require('./assets/Original con lapa.png')}
-          style={styles.tripPlannerMalekuWatermark}
-          resizeMode="contain"
-        />
         <ScrollView
           contentContainerStyle={styles.tripPlannerScreenContent}
           showsVerticalScrollIndicator={false}
@@ -36016,7 +36011,7 @@ const styles = StyleSheet.create({
   },
 
   tripPlannerFlowBackgroundImage: {
-    opacity: 0.3,
+    opacity: 1,
   },
 
   // Fondo Maleku (coloso_arenal) para Paso 5 / Itinerario / Presupuesto.
