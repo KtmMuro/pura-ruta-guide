@@ -3052,8 +3052,49 @@ function Home({ onLogout, weather, language, signupAuthRevision }) {
         return null;
       }
 
+      let locationName = 'Mi ubicación actual';
+
+      try {
+        const reverseResults = await Location.reverseGeocodeAsync({
+          latitude,
+          longitude,
+        });
+
+        const address = Array.isArray(reverseResults)
+          ? reverseResults[0]
+          : null;
+
+        if (address) {
+          const locationParts = [
+            address.name,
+            address.district,
+            address.city,
+            address.subregion,
+            address.region,
+          ]
+              .map((part) => String(part || '').trim())
+              .filter((part) => !/^[23456789CFGHJMPQRVWX]{4,8}\+[23456789CFGHJMPQRVWX]{2,3}$/i.test(part))
+            .filter(
+              (part, index, parts) =>
+                part &&
+                parts.findIndex(
+                  (item) =>
+                    item.toLocaleLowerCase() === part.toLocaleLowerCase()
+                ) === index
+            );
+
+          if (locationParts.length > 0) {
+            locationName = locationParts.join(', ');
+          }
+        }
+      } catch (reverseGeocodeError) {
+        if (typeof __DEV__ !== 'undefined' && __DEV__) {
+          console.log('=== TRIP ORIGIN REVERSE GEOCODE FALLBACK ===');
+        }
+      }
+
       const resolvedLocation = {
-        name: 'Mi ubicación actual',
+        name: locationName,
         latitude,
         longitude,
       };
@@ -31275,7 +31316,9 @@ function Home({ onLogout, weather, language, signupAuthRevision }) {
               tripOriginResolutionStatus === 'resolved' &&
               tripOriginLocation ? (
                 <Text style={styles.tripBudgetLabelActive}>
-                  {t('planner.origin.resolved')}
+                    {tripOriginLocation.name
+                      ? `✓ ${tripOriginLocation.name}`
+                      : t('planner.origin.resolved')}
                 </Text>
               ) : null}
 
@@ -31440,7 +31483,37 @@ function Home({ onLogout, weather, language, signupAuthRevision }) {
                   >
                     {t('planner.destination.samePlace')}
                   </Text>
-                </View>
+                    {tripReturnsToOrigin === true &&
+                    tripOriginResolutionStatus === 'resolved' &&
+                    tripOriginLocation?.name ? (
+                      <Text style={styles.tripBudgetDescription}>
+                        {`✓ ${tripOriginLocation.name}`}
+                      </Text>
+                    ) : null}
+                  </View>
+                  {tripReturnsToOrigin === true ? (
+                    <View
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 16,
+                        backgroundColor: colors.green,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginLeft: 8,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: '#FFFFFF',
+                          fontSize: 20,
+                          fontWeight: '800',
+                        }}
+                      >
+                        ✓
+                      </Text>
+                    </View>
+                  ) : null}
               </Pressable>
 
               {tripReturnsToOrigin === false ? (
@@ -31487,6 +31560,29 @@ function Home({ onLogout, weather, language, signupAuthRevision }) {
                       ]}
                     />
                   </View>
+                  {tripReturnsToOrigin === false ? (
+                    <View
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 16,
+                        backgroundColor: colors.green,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginLeft: 8,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: '#FFFFFF',
+                          fontSize: 20,
+                          fontWeight: '800',
+                        }}
+                      >
+                        ✓
+                      </Text>
+                    </View>
+                  ) : null}
                 </View>
               ) : (
                 <Pressable
@@ -31505,12 +31601,22 @@ function Home({ onLogout, weather, language, signupAuthRevision }) {
               {tripReturnsToOrigin === false ? (
                 <>
                   <Pressable
-                    onPress={resolveTripFinalDestinationFromQuery}
+                    onPress={() => {
+                      if (tripFinalDestinationResolutionStatus === 'resolved') {
+                        markTripDraftProgress();
+                        setTripFinalDestinationLocation(null);
+                        setTripFinalDestinationResolutionStatus('idle');
+                      } else {
+                        resolveTripFinalDestinationFromQuery();
+                      }
+                    }}
                     style={styles.tripBudgetOption}
                   >
                     <View style={styles.tripBudgetInfo}>
                       <Text style={styles.tripBudgetLabel}>
-                        {t('planner.destination.search')}
+                        {tripFinalDestinationResolutionStatus === 'resolved'
+                          ? t('planner.destination.change')
+                          : t('planner.destination.search')}
                       </Text>
                     </View>
                   </Pressable>
@@ -31525,12 +31631,6 @@ function Home({ onLogout, weather, language, signupAuthRevision }) {
                   {tripFinalDestinationResolutionStatus === 'resolving' ? (
                     <Text style={styles.tripBudgetDescription}>
                       {t('planner.destination.searching')}
-                    </Text>
-                  ) : null}
-                  {tripFinalDestinationResolutionStatus === 'resolved' &&
-                  tripFinalDestinationLocation ? (
-                    <Text style={styles.tripBudgetLabelActive}>
-                      {t('planner.destination.found')} {tripFinalDestinationLocation.name}
                     </Text>
                   ) : null}
                   {tripFinalDestinationResolutionStatus === 'not_found' ? (
